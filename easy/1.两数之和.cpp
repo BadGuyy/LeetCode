@@ -10,6 +10,20 @@ class Solution
 public:
     vector<int> twoSum(vector<int> &nums, int target)
     {
+        // 哈希表解法，key为元素值，value为元素下标
+        unordered_map<int, int> hashMap;
+        for(int i = 0; i < nums.size(); ++i)
+        {
+            if(hashMap.find(target - nums[i]) != hashMap.end())
+            {
+                return vector<int> {hashMap[target - nums[i]] i};
+            }
+            else
+            {
+                hashMap[nums[i]] = i;
+            }
+        }
+        
         // 暴力解法
         // for(int i = 0; i < nums.size(); ++i)
         // {
@@ -22,19 +36,6 @@ public:
         //     }
         // }
 
-        // 哈希表解法，key为元素值，value为元素下标
-        unordered_map<int, int> hashMap;
-        for(int i = 0; i < nums.size(); ++i)
-        {
-            if(hashMap.find(target - nums[i]) != hashMap.end())
-            {
-                return vector<int> {hashMap[target - nums[i]], i};
-            }
-            else
-            {
-                hashMap[nums[i]] = i;
-            }
-        }
 
         // 未找到解
         return {};
