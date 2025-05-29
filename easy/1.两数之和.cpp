@@ -16,7 +16,7 @@ public:
         {
             if(hashMap.find(target - nums[i]) != hashMap.end())
             {
-                return vector<int> {hashMap[target - nums[i]] i};
+                return vector<int> {hashMap[target - nums[i]], i};
             }
             else
             {
