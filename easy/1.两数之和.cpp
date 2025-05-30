@@ -11,6 +11,7 @@ public:
     vector<int> twoSum(vector<int> &nums, int target)
     {
         // 哈希表解法，key为元素值，value为元素下标
+        // 时间复杂度O(n)，空间复杂度O(n)
         unordered_map<int, int> hashMap;
         for(int i = 0; i < nums.size(); ++i)
         {
@@ -25,6 +26,7 @@ public:
         }
         
         // 暴力解法
+        // 时间复杂度O(n^2)，空间复杂度O(1)
         // for(int i = 0; i < nums.size(); ++i)
         // {
         //     for(int j = i + 1; j < nums.size(); ++j)

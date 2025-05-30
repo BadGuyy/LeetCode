@@ -10,7 +10,48 @@ class Solution
 public:
     int lengthOfLongestSubstring(string s)
     {
+
+        // 滑动窗口法最终优化，不让左指针遍历到字符串末尾，使用数组记录上一次出现的位置
+        // 时间复杂度 O(n)，空间复杂度 O(min(m, n))，m 为字符集大小，n 为字符串长度
+        vector<int> last_index(128, -1);
+        int ans = 0;
+        // 左闭右开窗口左边界的位置
+        int left = -1;
+        for (int right = 0; right < s.size(); ++right) {
+            char c = s[right];
+            left = max(left, last_index[c]);
+            ans = max(ans, right - left);
+            last_index[c] = right;
+        } 
+        return ans;
+
+        // 滑动窗口法优化，不让左指针遍历到字符串末尾
+        // 时间复杂度 O(n^2)，空间复杂度 O(∣Σ∣)，
+        // ∣Σ∣ 为字符集大小（即字符串中可以出现的字符数量）
+        // unordered_set<char> container;
+        // int ans = 0, left = 0, right = 0, tempLen = 0;
+        // while(right < s.size())
+        // {
+        //     char c = s[right];
+        //     if(container.count(c) == 0)
+        //     {
+        //         container.insert(c);
+        //         ++right;
+        //         ++tempLen;
+        //         ans = max(ans, tempLen);
+        //     }
+        //     else
+        //     {
+        //         container.erase(s[left]);
+        //         ++left;
+        //         --tempLen;
+        //     }
+        // }
+        // return ans;
+        
         // 滑动窗口法
+        // 时间复杂度 O(n^2)，空间复杂度 O(∣Σ∣)，
+        // ∣Σ∣ 为字符集大小（即字符串中可以出现的字符数量）
         // 哈希集合，记录每个字符是否出现过
         // unordered_set<char> container;
         // int n = s.size();
@@ -35,41 +76,6 @@ public:
         //     ans = max(ans, rk - i);
         // }
         // return ans;
-
-        // 滑动窗口法优化，不让左指针遍历到字符串末尾
-        // unordered_set<char> container;
-        // int ans = 0, left = 0, right = 0, tempLen = 0;
-        // while(right < s.size())
-        // {
-        //     char c = s[right];
-        //     if(container.count(c) == 0)
-        //     {
-        //         container.insert(c);
-        //         ++right;
-        //         ++tempLen;
-        //         ans = max(ans, tempLen);
-        //     }
-        //     else
-        //     {
-        //         container.erase(s[left]);
-        //         ++left;
-        //         --tempLen;
-        //     }
-        // }
-        // return ans;
-
-        // 滑动窗口法最终优化，不让左指针遍历到字符串末尾，使用数组记录上一次出现的位置
-        vector<int> last_index(128, -1);
-        int ans = 0;
-        // 左闭右开窗口左边界的位置
-        int left = -1;
-        for (int right = 0; right < s.size(); ++right) {
-            char c = s[right];
-            left = max(left, last_index[c]);
-            ans = max(ans, right - left);
-            last_index[c] = right;
-        } 
-        return ans;
     }
 };
 // @lc code=end

@@ -21,6 +21,7 @@ public:
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
         // 链表节点相加法
+        // 时间复杂度O(max(m,n))，空间复杂度O(max(m,n))
         ListNode *head = new 
         ListNode(0);
         ListNode *cur = head;
@@ -52,6 +53,7 @@ public:
 
         
         // 暴力直觉法，将链表转为数字，然后相加，再转为链表
+        // 时间复杂度O(max(m,n))，空间复杂度O(max(m,n))
         // 不可行，因为数字可能很大，相加后很可能溢出
         // 可考虑使用大数类
         // int num1 = 0, num2 = 0;
