@@ -34,7 +34,7 @@ public:
         // int len = s.size();
         // if (len < 2) return s;
         // // 定义dp数组，dp[i][j]表示s[i...j]是否为回文串
-        // // 这里双数组的上三角应该都为false，真正有意义的是下三角
+        // // 这里双数组的下三角应该都为false，真正有意义的是上三角
         // // 因为只需要判断i<=j的子串是否为回文串，下面的大循环已经排除了i>j的子串
         // vector<vector<bool>> dp(len, vector<bool>(len, false));
         // // 记录最长回文子串的起始位置和长度
